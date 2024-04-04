@@ -26,18 +26,6 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
-                        <div class="nav-item dropdown">
-                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider">
-                                    </div>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
                         <li class="nav-item">
                             <a class="nav-link" href="dashboard/logout">Logout</a>
                         </li>
