@@ -2,7 +2,8 @@
 <?= $this->section('content')?>
 
     <?php if($role): ?>
-        <form method="post" action="/ametecs-students-project/public/dashboard/new-student-info" class="mb-4">
+        <?= view_cell('\App\Libraries\StudentsForm::addStudent')?>
+        <!-- <form method="post" action="/ametecs-students-project/public/dashboard/new-student-info" class="mb-4">
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="student-name">Student name</label>
@@ -47,7 +48,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        </form> -->
     <?php endif; ?>
 
     <div class="table-responsive">

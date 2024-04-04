@@ -44,6 +44,8 @@ class Dashboard extends Basecontroller {
     public function editStudentInfo($studentId = '') {
         $data = [
             'title' => 'edit student',
+            'branch' => ['Select Branch', 'CSC', 'IOT', 'EEE', 'ECE'],
+            'year' => ['Select Year', 1, 2, 3, 4],
             'validation' => ''
         ];
 
