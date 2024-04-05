@@ -40,8 +40,8 @@
             <div class="form-group">
               <label for="password">Password</label>
               <div class="d-flex align-items-center">
-                <input id="password" type="password" class="form-control mr-1" id="password" name="password" value="<?= set_value('password')?>">
-                <i id="showPasswordBtn" class="fas fa-eye btn btn-transparent btn-small"></i>
+                <input id="password" type="password" class="form-control mr-2" id="password" name="password" value="<?= set_value('password')?>">
+                <i id="showPasswordBtn" class="fas fa-eye" style="cursor: pointer;"></i>
               </div>
             </div>
             <div class="form-group">
@@ -78,3 +78,29 @@
 
 </body>
 </html>
+
+
+
+<!-- when it try to signup with alredy existing email in codeigniter 4. it is showing this error.
+
+CodeIgniter\Database\Exceptions\DatabaseException #1062
+Duplicate entry 'ka@gmail.com' for key 'email'
+SYSTEMPATH\Database\BaseConnection.php at line 647
+
+640                     }
+641                 }
+642 
+643                 // Let others do something with this query.
+644                 Events::trigger('DBQuery', $query);
+645 
+646                 if ($exception !== null) {
+647                     throw new DatabaseException(
+648                         $exception->getMessage(),
+649                         $exception->getCode(),
+650                         $exception
+651                     );
+652                 }
+653 
+654                 return false;
+
+but i want to show error in frontend like "this user is already existinh" -->

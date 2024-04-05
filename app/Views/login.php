@@ -34,8 +34,8 @@
             <div class="form-group">
               <label for="password">Password</label>
               <div class="d-flex align-items-center">
-                <input id="password" type="password" class="form-control mr-1" id="password" name="password">
-                <i id="showPasswordBtn" class="fas fa-eye btn btn-transparent btn-small"></i>
+                <input id="password" type="password" class="form-control mr-2" id="password" name="password">
+                <i id="showPasswordBtn" class="fas fa-eye" style="cursor: pointer;"></i>
               </div>
               <!-- <input type="password" class="form-control" id="password" name="password"> -->
             </div>
