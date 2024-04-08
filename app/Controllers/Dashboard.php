@@ -4,19 +4,66 @@ namespace App\Controllers;
 
 use App\Models\DashboardModel;
 
+use CodeIgniter\Controller;
+use CodeIgniter\HTTP\CLIRequest;
+use CodeIgniter\HTTP\IncomingRequest;
+use CodeIgniter\HTTP\RequestInterface;
+use CodeIgniter\HTTP\ResponseInterface;
+use Psr\Log\LoggerInterface;
+
 class Dashboard extends Basecontroller {
+
+
+    // public function __construct()  {
+    //     echo "ASdfdasfdsaf";
+    // }
+     /**
+     * Be sure to declare properties for any property fetch you initialized.
+     * The creation of dynamic property is deprecated in PHP 8.2.
+     */
+    // protected $session;
+
+    /**
+     * @return void
+     */
+    // public function initController(RequestInterface $request,
+    //                             ResponseInterface $response,
+    //                             LoggerInterface $logger)
+    // {
+    //     // Do Not Edit This Line
+    //     parent::initController($request, $response, $logger);
+
+    //     // Preload any models, libraries, etc, here.
+       
+    //         if(1) {
+    //             echo "stop"; die;
+    //         }
+
+    //     // E.g.: $this->session = \Config\Services::session();
+    // }
+ 
+
+
+    public function list($a , $b)
+    {
+        // echo $a + $b;
+        echo $a . '_______' . $b;
+        exit();
+    }
+
+    public function names(...$p)
+    {
+            print_r($p);
+    }
+
     public function index() {
         $session = session();
-
-        $userId = $session->get('user_id');
-        $email = $session->get('email');
-        $role = $session->get('role'); //////new
         
         $data = [
             'title' => 'dashboard',
-            'userId' => $userId,
-            'email' => $email,
-            'role' => $role //////new
+            'userId' => $session->get('user_id'),
+            'email' => $session->get('email'),
+            'role' => $session->get('role')
         ];
 
         $model = new DashboardModel();
@@ -43,7 +90,7 @@ class Dashboard extends Basecontroller {
 
     public function editStudentInfo($studentId = '') {
         $data = [
-            'title' => 'edit student',
+            'title' => "edit student $studentId",
             'branch' => ['Select Branch', 'CSC', 'IOT', 'EEE', 'ECE'],
             'year' => ['Select Year', 1, 2, 3, 4],
             'validation' => ''
@@ -125,8 +172,7 @@ class Dashboard extends Basecontroller {
     }
 
     public function logout() {
-        $session = session();
-        $session->destroy();
+        session()->destroy();
         header("Location: /ametecs-students-project/public");
         exit;
     }

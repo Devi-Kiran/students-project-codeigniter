@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SignupModel extends Model {
+class LoginAndSignupModel extends Model {
     protected $table = 'users';
     protected $primaryKey = 'user_id';
     protected $allowedFields = ['user_name', 'email', 'password', 'mobile_number'];

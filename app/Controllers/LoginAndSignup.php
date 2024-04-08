@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\SignupModel;
+use App\Models\LoginAndSignupModel;
 
 class LoginAndSignup extends BaseController
 {
@@ -19,7 +19,7 @@ class LoginAndSignup extends BaseController
                 'email' => [
                     'rules' => 'required|valid_email',
                     'errors' => [
-                        'required' => 'Email is eequired',
+                        'required' => 'Email is required',
                         'valid_email' => 'Please enter valid email'
                     ]
                 ],
@@ -33,7 +33,7 @@ class LoginAndSignup extends BaseController
             ];
 
             if($this->validate($rules)) {
-                $loginModel = new SignupModel();
+                $loginModel = new LoginAndSignupModel();
                 $user = $loginModel->where('email', $this->request->getVar('email'))
                                   ->first();
                 
@@ -43,7 +43,7 @@ class LoginAndSignup extends BaseController
                     $session->set([
                         'user_id' => $user['user_id'],
                         'email' => $user['email'],
-                        'role' => $user['role'] /////////new
+                        'role' => $user['role']
                     ]);
 
                     header("Location: /ametecs-students-project/public/dashboard");
@@ -98,12 +98,12 @@ class LoginAndSignup extends BaseController
             ];
 
             if($this->validate($rules)) {
-                $model = new SignupModel();
-                if($model->save($_POST)) {
+                $signupModel = new LoginAndSignupModel();
+                if($signupModel->save($_POST)) {
                     header("Location: http://localhost:8080/ametecs-students-project/public");
                     exit();
                 } else {
-                    echo "Error: " . $model->errors();
+                    echo "Error: " . $signupModel->errors();
                     exit();
                 }
             } else {

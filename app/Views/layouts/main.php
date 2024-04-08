@@ -27,7 +27,7 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard/logout">Logout</a>
+                            <a class="nav-link" href="/ametecs-students-project/public/dashboard/logout">Logout</a>
                         </li>
                     </ul>
                 </div>

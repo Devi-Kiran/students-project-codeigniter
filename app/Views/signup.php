@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,8 +80,39 @@
 
 
 
-<!-- when it try to signup with alredy existing email in codeigniter 4. it is showing this error.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- when it try to signup with alredy existing email in codeigniter 4. it is showing this error.
 CodeIgniter\Database\Exceptions\DatabaseException #1062
 Duplicate entry 'ka@gmail.com' for key 'email'
 SYSTEMPATH\Database\BaseConnection.php at line 647
@@ -94,9 +124,9 @@ SYSTEMPATH\Database\BaseConnection.php at line 647
 644                 Events::trigger('DBQuery', $query);
 645 
 646                 if ($exception !== null) {
-647                     throw new DatabaseException(
-648                         $exception->getMessage(),
-649                         $exception->getCode(),
+  647                     throw new DatabaseException(
+    648                         $exception->getMessage(),
+    649                         $exception->getCode(),
 650                         $exception
 651                     );
 652                 }
