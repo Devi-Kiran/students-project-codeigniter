@@ -7,19 +7,19 @@ use CodeIgniter\Router\RouteCollection;
  */
 
 /////////Public Routes
-// $routes->get('/', 'LoginAndSignup::index');
-// $routes->post('/', 'LoginAndSignup::index');
 $routes->match(['get', 'post'],'/', 'LoginAndSignup::index');
 $routes->get('/signup', 'LoginAndSignup::signup');
 $routes->post('/signup', 'LoginAndSignup::signup');
 
 ////////Protected Routes
-$routes->get('/dashboard', 'Dashboard::index');
-$routes->post('/dashboard', 'Dashboard::index');
-$routes->post('/dashboard/new-student-info', 'Dashboard::newStudentInfo');
-$routes->get('/dashboard/edit-student-info/(:any)', 'Dashboard::editStudentInfo/$1');
-$routes->post('/dashboard/edit-student-info/(:any)', 'Dashboard::editStudentInfo/$1');
-$routes->get('/dashboard/delete/(:any)', 'Dashboard::deleteStudentInfo/$1');
+
+$routes->match(['get', 'post'],'/dashboard', 'Dashboard::index');
+$routes->get('/dashboard/add-student', 'CrudOperations::addStudent');
+$routes->post('/dashboard/add-student', 'CrudOperations::addStudentInfo');
+//$routes->post('/dashboard/new-student-info', 'CrudOperations::newStudentInfo');
+$routes->get('/dashboard/edit-student-info/(:any)', 'CrudOperations::editStudentInfo/$1');
+$routes->post('/dashboard/edit-student-info/(:any)', 'CrudOperations::editStudentInfo/$1');
+$routes->get('/dashboard/delete/(:any)', 'CrudOperations::deleteStudentInfo/$1');
 $routes->get('/dashboard/logout', 'Dashboard::logout');
 
 
