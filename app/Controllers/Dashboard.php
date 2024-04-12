@@ -62,6 +62,13 @@ class Dashboard extends Basecontroller {
         return view('dashboard', $data);
     }
 
+    
+    public function logout() {
+        session()->destroy();
+        header("Location: /ametecs-students-project/public");
+        exit;
+    }
+    
     // public function newStudentInfo() {
     //     $model = new DashboardModel();
     
@@ -160,10 +167,4 @@ class Dashboard extends Basecontroller {
     //         exit();
     //     }
     // }
-
-    public function logout() {
-        session()->destroy();
-        header("Location: /ametecs-students-project/public");
-        exit;
-    }
 }

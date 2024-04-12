@@ -41,7 +41,12 @@
         </nav>
     </header>
     <section class="container">
-        <?= $this->renderSection('content')?>
+        <div class="row">
+            <?= $this->include("widgets/side_navbar")?>
+            <div class="col-9">
+                <?= $this->renderSection('content')?>
+            </div>
+        <div>
     </section>
 </body>
 </html>
