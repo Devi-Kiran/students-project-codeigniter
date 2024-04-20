@@ -1,4 +1,4 @@
-<div class="fixed-top fixed-bottom overflow-scroll" style="width: 15%; background-color: #2878b5;">
+<div class="fixed-top fixed-bottom overflow-scroll d-none d-lg-block" style="width: 210px; background-color: #2878b5;">
     <div class="my-1 text-center">
         <a href="/ametecs-students-project/public/dashboard">
             <img src="https://dcm.ametecsindia.com/assets/uploads/slam_images/ametecs_light.png" />

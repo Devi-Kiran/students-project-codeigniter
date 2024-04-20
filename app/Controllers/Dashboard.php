@@ -48,13 +48,15 @@ class Dashboard extends Basecontroller {
 
     public function index() {
         $session = session();
-        
+      // echo "<pre>";    print_r();  die;
+       // $session->get();
         $data = [
             'title' => 'dashboard',
             'userId' => $session->get('user_id'),
             'email' => $session->get('email'),
             'role' => $session->get('role')
         ];
+      //  echo "<pre>";    print_r($data);  die;
 
         $model = new DashboardModel();
         $data['allStudents'] = $model->getStudents();

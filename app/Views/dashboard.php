@@ -1,5 +1,12 @@
-<?= $this->extend('layouts/main')?>
-<?= $this->section('content')?>
+<?= $this->extend('layouts/main2')?>
+<?= $this->extend('layouts/main') //overrided?>
+
+<?= $this->section('hello')?>
+    <h1>0000000000000000000000000</h1>
+<?= $this->endSection()?>
+
+
+<?= $this->section('content')?> 
 
 <?php if($role): ?>
     <!-- <form method="post" action="/ametecs-students-project/public/dashboard/new-student-info" class="mb-4">

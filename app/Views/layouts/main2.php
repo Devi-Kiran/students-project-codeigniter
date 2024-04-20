@@ -37,36 +37,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header style="padding-left: 210px;" class="mb-4 fixed-top">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container mx-0">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/ametecs-students-project/public/dashboard">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <?php if(session()->get('role')): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/ametecs-students-project/public/dashboard/add-student">Add Student</a>
-                            </li>
-                        <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ametecs-students-project/public/dashboard/logout">Logout</a>
-                        </li>
-                    </ul>
-                </div>
-                <span class="d-none d-lg-inline-block"><?= session()->get('email');?> <?= session()->get('role') ? '(Admin)' : '';?></span>
-            </div>
-        </nav>
-    </header>
+    
     <section style="margin-top: 70px;">
         <?= $this->include("widgets/side_navbar")?>
         <div style="padding-left: 210px;">
             <div class="px-4">
-                <?= $this->renderSection('content')?>
+                <?= $this->renderSection('hello')?>  
+
+                <div class="px-4">
+                    <?= $this->renderSection('content')?>
+                </div>
             </div>
         <div>
     </section>

@@ -27,7 +27,7 @@ class LoginAndSignup extends BaseController
                     'rules' => 'required|min_length[8]',
                     'errors' => [
                         'required' => 'Password is required',
-                        'min_length' => 'Password must have a minimum of 8 characters'
+                        'min_length' => 'Password must have a minimum of 8S characters'
                     ]
                 ]    
             ];

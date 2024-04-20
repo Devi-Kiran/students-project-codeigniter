@@ -9,6 +9,7 @@ class LoginAndSignupModel extends Model {
     protected $primaryKey = 'user_id';
     protected $allowedFields = ['user_name', 'email', 'password', 'mobile_number'];
     protected $useTimestamps = true;
+    
     protected $createdField = 'user_created_at';
     protected $updatedField = "updated_at";
     protected $beforeInsert = ['maskPassword'];

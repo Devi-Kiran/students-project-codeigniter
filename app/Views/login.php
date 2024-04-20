@@ -26,10 +26,15 @@
       <div class="col-md-6">
         <div class="form-container bg-white p-5">
           <h2 class="text-center">LOGIN</h2>
+          <div class="text-danger">
+              <?= $validation?>
+              <?= $error?>
+          </div>
           <form method="post">
             <div class="form-group">
               <label for="email">Email</label>
               <input type="text" class="form-control" id="email" name="email">
+              <span>Error messagre</span>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -42,10 +47,7 @@
             <button type="submit" class="btn btn-primary btn-block">Login</button>
             <a href="/ametecs-students-project/public/signup" class="btn btn-outline-primary btn-block">Signup</a>
           </form>
-          <div class="text-danger">
-              <?= $validation?>
-              <?= $error?>
-          </div>
+          
         </div>
       </div>
     </div>
