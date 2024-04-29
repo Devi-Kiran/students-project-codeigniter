@@ -27,7 +27,7 @@ class LoginAndSignup extends BaseController
                     'rules' => 'required|min_length[8]',
                     'errors' => [
                         'required' => 'Password is required',
-                        'min_length' => 'Password must have a minimum of 8S characters'
+                        'min_length' => 'Password must have a minimum of 8 characters'
                     ]
                 ]    
             ];
@@ -36,17 +36,18 @@ class LoginAndSignup extends BaseController
                 $loginModel = new LoginAndSignupModel();
                 $user = $loginModel->where('email', $this->request->getVar('email'))
                                   ->first();
-                
+                $otp = rand(100000,999999);
+                $session = session();
+                $session->set([
+                    'user_name' => $user['user_name'],
+                    'user_id' => $user['user_id'],
+                    'email' => $user['email'],
+                    'role' => $user['role'],
+                    'otp' => $otp
+                ]);
 
-                if ($user && password_verify($this->request->getVar('password'), $user['password'])) {
-                    $session = session();
-                    $session->set([
-                        'user_id' => $user['user_id'],
-                        'email' => $user['email'],
-                        'role' => $user['role']
-                    ]);
-
-                    header("Location: /ametecs-students-project/public/dashboard");
+                if ($user && password_verify($this->request->getVar('password'), $user['password'])) {  
+                    header("Location: /ametecs-students-project/public/otp-verification");
                     exit;
                 } else {
                     $data['error'] = 'Invalid email or password';
@@ -59,6 +60,7 @@ class LoginAndSignup extends BaseController
     }
 
     public function signup() {
+        $email = \Config\Services::email();
         $data = [
             'title' => 'signup',
             'validation' => ''
@@ -98,6 +100,23 @@ class LoginAndSignup extends BaseController
             ];
 
             if($this->validate($rules)) {
+                // $email->setFrom('bandarudevikiran@gmail.com');
+                // $email->setTo($this->request->getVar('email'));
+                // $email->setSubject('information');
+                // $email->setMessage('****************************');
+                
+                // echo "<pre>";
+                // print_r($email);
+                // echo "</pre>";
+
+                // if ($email->send()) {
+                //     echo 'Email sent successfully';
+                // } else {
+                //     echo 'Email could not be sent';
+                //     echo $email->printDebugger(['headers']);
+                // }
+                // die;
+
                 $signupModel = new LoginAndSignupModel();
                 if($signupModel->save($_POST)) {
                     header("Location: http://localhost:8080/ametecs-students-project/public");
@@ -111,5 +130,53 @@ class LoginAndSignup extends BaseController
             }  
         }
         return view('signup', $data);
+    }
+
+    public function otpVerfication() {
+        $email = \Config\Services::email();
+
+        $data = [
+            'title' => 'OTP Verification',
+            'information' => '',
+            'validation' => '',
+            'error' => ''
+        ];
+
+        $userName = session()->get('user_name');
+        $userEmail = session()->get('email');
+        $otp = session()->get('otp');
+               
+        $message = "
+        Dear $userName,
+            
+        Thank you for choosing our platform for your login needs. To proceed with your login, please use the following One Time Password (OTP): $otp
+            
+        This OTP is valid for a single use and will expire shortly. Please enter this OTP in the designated field on our login page to access your account securely.
+            
+        Thank you for choosing Us.
+        ";
+
+        $email->setFrom('bandarudevikiran@gmail.com');
+        $email->setTo($userEmail);
+        $email->setSubject('Your One Time Password (OTP) for Login');
+        $email->setMessage($message);
+
+        if ($email->send()) {
+            $data['information'] =  'OTP sent successfully to your email';
+        } else {
+            $data['error'] =  'OTP could not be sent';
+            echo $email->printDebugger(['headers']);
+        }
+
+        if($this->request->getMethod() == 'post') {
+            if($otp == $this->request->getVar('otp')) {
+                header("Location: /ametecs-students-project/public/dashboard");
+                exit;
+            } else {
+                $data['error'] = 'Invalid OTP';
+            }
+        }
+        
+        return view('otp_verification', $data);
     }
 }

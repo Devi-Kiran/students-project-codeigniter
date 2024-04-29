@@ -10,6 +10,18 @@ class Email extends BaseConfig
     public string $fromName   = '';
     public string $recipients = '';
 
+    // $config = Array(
+    //     'protocol' => 'smtp',
+    //     'smtp_host' => 'sandbox.smtp.mailtrap.io',
+    //     'smtp_port' => 2525,
+    //     'smtp_user' => '17a25c40065847',
+    //     'smtp_pass' => 'd4c4ce5a76a908',
+    //     'crlf' => "\r\n",
+    //     'newline' => "\r\n"
+    // );
+
+
+
     /**
      * The "user agent"
      */
@@ -18,7 +30,7 @@ class Email extends BaseConfig
     /**
      * The mail sending protocol: mail, sendmail, smtp
      */
-    public string $protocol = 'mail';
+    public string $protocol = 'smtp';
 
     /**
      * The server path to Sendmail.
@@ -28,22 +40,22 @@ class Email extends BaseConfig
     /**
      * SMTP Server Hostname
      */
-    public string $SMTPHost = '';
+    public string $SMTPHost = 'smtp.gmail.com';
 
     /**
      * SMTP Username
      */
-    public string $SMTPUser = '';
+    public string $SMTPUser = 'bandarudevikiran@gmail.com';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = '';
+    public string $SMTPPass = 'oastyafggjxwlwrt';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 25;
+    public int $SMTPPort = 465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -62,7 +74,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
     /**
      * Enable word-wrap

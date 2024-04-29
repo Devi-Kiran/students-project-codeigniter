@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 
 /////////Public Routes
 $routes->match(['get', 'post'],'/', 'LoginAndSignup::index');
+$routes->match(['get', 'post'],'/otp-verification', 'LoginAndSignup::otpVerfication');
 $routes->get('/signup', 'LoginAndSignup::signup');
 $routes->post('/signup', 'LoginAndSignup::signup');
 
